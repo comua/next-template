@@ -6,7 +6,7 @@
   </a>
 </p>
 
-## 🚀 Quick start
+## Start
 
 1.  **Clone repository**
 
@@ -25,7 +25,7 @@
 
     Your site is now running at `http://localhost:3000`!
 
-## 🧐 What's inside?
+## Inside
 
 #### Language
 
@@ -51,10 +51,9 @@
 - husky
 - lint-staged
 
-### Testing
+### UI Components
 
-- vitest
-- testing library
+- headlessui
 
 ### Styling
 
@@ -62,6 +61,7 @@
 - postcss
 - autoprefixer
 - tailwind-merge
+- clsx
 
 ### Animation
 

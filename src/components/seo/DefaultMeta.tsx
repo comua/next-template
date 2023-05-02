@@ -1,20 +1,19 @@
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import { FC } from 'react'
+import tailwindConfig from 'tailwind.config'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
-import tailwindConfig from '../../../tailwind.config.js'
-
-interface IDefaultMetaProps {
+interface DefaultMetaProps {
   canonical: string
 }
 
-export const DefaultMeta: FC<IDefaultMetaProps> = ({ canonical }) => {
+export const DefaultMeta: FC<DefaultMetaProps> = ({ canonical }) => {
   const tailwindVars = resolveConfig(tailwindConfig)
   const site = {
     themeColor: (tailwindVars.theme.colors as any).light,
     locale: 'en',
-    name: 'Next Template',
+    name: 'Template',
     description: 'Next.js Template',
   }
 

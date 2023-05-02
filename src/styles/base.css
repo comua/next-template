@@ -1,11 +1,4 @@
-@charset "utf-8";
-
-@import './components.css';
-@import './utilities.css';
-
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   /*
@@ -20,15 +13,12 @@
   ** 6. Change the default tap highlight to be completely transparent in iOS.
   */
   html {
-    overflow-x: hidden; /* 1 */
-    overflow-y: auto; /* 2 */
     min-height: 100%; /* 3 */
-    scroll-behavior: smooth;
   }
 
   body {
     @apply w-full; /* 4 */
-    @apply bg-black text-base text-white antialiased;
+    @apply bg-background text-base leading-tight text-slate-50 antialiased;
     -webkit-text-size-adjust: 100%; /* 5 */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 6 */
     -webkit-overflow-scrolling: touch;
@@ -37,15 +27,24 @@
 
   /*
   ** :root
+  ** 1. Set dark color scheme on scrollbar for Chrome.
   */
   :root {
+    color-scheme: dark; /* 1 */
+    --default-padding: 2.4rem;
+  }
+
+  @media screen(tablet) {
+    :root {
+      --default-padding: 3.2rem;
+    }
   }
 
   /*
   ** Default :focus-visible style
   */
   :focus-visible {
-    @apply outline-dashed outline-2;
+    @apply outline-1 outline-offset-4;
   }
 
   /*
@@ -72,7 +71,7 @@
 
     @media screen(tablet) {
       /* Viewport sizing calculation */
-      font-size: calc(var(--size-base) * (100vw / var(--size-artboard)));
+      font-size: min(10px, calc(var(--size-base) * (100vw / var(--size-artboard))));
     }
   }
 
@@ -80,8 +79,25 @@
   ** Text selection
   */
   ::selection {
-    @apply bg-slate-700 text-white;
+    @apply bg-pink-600/30;
     text-shadow: none;
+  }
+
+  h1 {
+    @apply bg-clip-text pb-8 text-48 font-medium leading-none tracking-tight text-transparent tablet:text-80;
+    background-image: linear-gradient(
+      to right bottom,
+      rgb(255, 255, 255) 30%,
+      rgba(255, 255, 255, 0.38)
+    );
+  }
+
+  h2 {
+    @apply bg-clip-text pb-8 text-32 font-medium leading-none tracking-tight text-slate-50 tablet:text-56;
+  }
+
+  h3 {
+    @apply bg-clip-text pb-8 text-24 font-medium leading-none tracking-tight text-slate-50;
   }
 
   /*
@@ -91,10 +107,11 @@
   */
   p {
     @apply break-words; /* 1 */
-  }
+    @apply text-16 text-slate-400 tablet:text-24;
 
-  p:empty {
-    @apply hidden; /* 2 */
+    &:empty {
+      @apply hidden; /* 2 */
+    }
   }
 
   /*

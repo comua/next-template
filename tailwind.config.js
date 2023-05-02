@@ -5,6 +5,7 @@ module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/features/**/*.{js,ts,jsx,tsx}',
     './src/lib/**/*.{js,ts,jsx,tsx}',
     // For the best performance and to avoid false positives,
     // be as specific as possible with your content configuration.
@@ -18,6 +19,8 @@ module.exports = {
       'desktop-xl': '1920px',
     },
     spacing: {
+      header: '4.8rem',
+      page: 'var(--default-padding)',
       0: '0',
       1: '0.1rem',
       2: '0.2rem',
@@ -30,15 +33,16 @@ module.exports = {
       40: '4rem',
       48: '4.8rem',
       64: '6.4rem',
+      80: '8rem',
       96: '9.6rem',
       144: '14.4rem',
       192: '19.2rem',
     },
     fontFamily: {
-      body: ['var(--font-inter)', fontFamily.sans],
+      primary: ['var(--font-inter)', fontFamily.sans],
     },
     fontSize: {
-      base: '2rem',
+      base: '1.4rem',
       0: '0',
       1: '0.1rem',
       2: '0.2rem',
@@ -51,21 +55,20 @@ module.exports = {
       32: '3.2rem',
       40: '4rem',
       48: '4.8rem',
+      56: '5.6rem',
       64: '6.4rem',
+      80: '8rem',
       96: '9.6rem',
       144: '14.4rem',
       192: '19.2rem',
     },
     fontWeight: {
-      thin: 100,
-      extralight: 200,
       light: 300,
       normal: 400,
+      book: 450,
       medium: 500,
       semibold: 600,
       bold: 700,
-      extrabold: 800,
-      black: 900,
     },
     lineHeight: {
       none: '1',
@@ -74,28 +77,41 @@ module.exports = {
     },
     borderRadius: {
       none: '0',
-      sm: '10px',
-      DEFAULT: '15px',
-      lg: '25px',
+      xs: '0.4rem',
+      sm: '0.8rem',
+      DEFAULT: '1.6rem',
+      lg: '2.4rem',
+      xl: '4.8rem',
       full: '9999px',
+      '1/2': '50%',
     },
-    borderWidth: {
-      none: '0',
-      sm: '1px',
-      DEFAULT: '2px',
-      lg: '4px',
+    transitionDuration: {
+      sm: '0.1s',
+      DEFAULT: '0.25s',
+      lg: '0.5s',
+      xl: '1s',
     },
     extend: {
       colors: {
-        transparent: 'transparent',
+        transparent: 'rgb(255, 255, 255, 0)',
         current: 'currentColor',
         inherit: 'inherit',
         black: '#000000',
         white: '#ffffff',
+        background: 'rgb(0, 2, 18)',
+      },
+      maxWidth: {
+        content: '120rem',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
       },
       transitionTimingFunction: {
+        DEFAULT: 'ease',
         /* Defaults: quint (called "power4" in GSAP) */
-        DEFAULT: 'cubic-bezier(0.83, 0, 0.17, 1)',
         in: 'cubic-bezier(0.64, 0, 0.78, 0)',
         out: 'cubic-bezier(0.22, 1, 0.36, 1)',
         'in-out': 'cubic-bezier(0.83, 0, 0.17, 1)',

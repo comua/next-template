@@ -27,7 +27,7 @@ export const PageTransition: FC<PropsWithChildren> = ({ children }) => {
   }
 
   return (
-    <TransitionGroup className="relative">
+    <TransitionGroup id="page-transition" className="relative">
       <Transition
         key={router.asPath}
         timeout={DURATION.out * 1000}

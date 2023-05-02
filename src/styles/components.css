@@ -1,0 +1,171 @@
+@tailwind components;
+
+@layer components {
+  @import './keyframes.css';
+  @import './mask.css';
+
+  /* Custom components */
+  .animate-gradient {
+    background: repeating-linear-gradient(
+      -20deg,
+      theme(colors.slate.900),
+      theme(colors.slate.900),
+      theme(colors.slate.700),
+      theme(colors.slate.800),
+      theme(colors.slate.900),
+      theme(colors.slate.800),
+      theme(colors.slate.900),
+      theme(colors.slate.700),
+      theme(colors.slate.900) 25%
+    );
+    background-position: top left;
+    background-size: 400% 400%;
+    animation: background-slide 30s linear infinite;
+  }
+
+  .animate-popup {
+    transition: transform 400ms ease-out 0s;
+    transform: rotateX(25deg);
+
+    animation-duration: 1400ms;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-name: popup;
+    animation-delay: 400ms;
+  }
+
+  .animate-hero-gradient-bloom {
+    @apply blur-[160px];
+
+    opacity: 0;
+    background: conic-gradient(
+      from 230.29deg at 51.63% 52.16%,
+      rgb(36, 0, 255) 0deg,
+      rgb(0, 135, 255) 67.5deg,
+      rgb(108, 39, 157) 198.75deg,
+      rgb(24, 38, 163) 251.25deg,
+      rgb(54, 103, 196) 301.88deg,
+      rgb(105, 30, 255) 360deg
+    );
+    transform: translateZ(0px);
+
+    animation-duration: 4.1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-name: bloom;
+    animation-delay: 600ms;
+  }
+
+  .hero {
+    perspective: 2000px;
+  }
+
+  .grid-area-1 {
+    grid-area: 1 / 1 / 1 / 1;
+  }
+
+  .radial-gradient {
+    background-image: radial-gradient(
+      ellipse 100% 40% at 50% 60%,
+      rgba(102, 99, 246, 0.07),
+      theme(colors.transparent)
+    );
+  }
+
+  .radial-gradient-t {
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(120, 119, 198, 0.3),
+      theme(colors.transparent)
+    );
+  }
+
+  .radial-gradient-hero {
+    background-color: rgba(255, 255, 255, 0.01);
+    background-image: radial-gradient(
+        ellipse 50% 80% at 20% 40%,
+        rgba(93, 52, 221, 0.1),
+        theme(colors.transparent)
+      ),
+      radial-gradient(
+        ellipse 50% 80% at 80% 50%,
+        rgba(120, 119, 198, 0.15),
+        theme(colors.transparent)
+      );
+  }
+
+  .radial-gradient-circle-t {
+    @apply relative overflow-hidden;
+    margin: -128px auto;
+    height: 600px;
+    -webkit-mask-image: radial-gradient(circle at center center, black, transparent 80%);
+
+    &:before {
+      @apply absolute inset-0 opacity-40;
+      content: '';
+      background: radial-gradient(circle at bottom center, #7877c6, transparent 70%);
+    }
+
+    &:after {
+      @apply absolute -left-1/2 top-1/2 w-[200%] rounded-1/2 border-t bg-background;
+      content: '';
+      aspect-ratio: 1 / 0.7;
+      border-color: rgba(120, 119, 198, 0.4);
+    }
+  }
+
+  .conic-gradient-t {
+    --top: #000212;
+    --bottom: #352a4f;
+    --first: conic-gradient(from 90deg at 60% 50%, var(--top), var(--bottom));
+    --second: conic-gradient(from 270deg at 40% 50%, var(--bottom), var(--top));
+
+    position: relative;
+    height: 400px;
+    background: var(--first), var(--second);
+    -webkit-mask-image: radial-gradient(100% 50% at center center, black, transparent);
+    background-position-x: 1%, 99%;
+    background-position-y: 0%, 0%;
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    transform-origin: center center;
+    transform: rotate(180deg);
+    will-change: transform, opacity;
+    transition: transform 1s, opacity 1s;
+    opacity: 0.4;
+
+    &:after {
+      content: '';
+      filter: url(#noiseFilter);
+      position: absolute;
+      inset: 0px 0px 50%;
+      overflow: hidden;
+      opacity: 0.1;
+      -webkit-mask-image: radial-gradient(140px 50% at 50% 100%, black, transparent);
+    }
+
+    @media screen(tablet) {
+      --first: conic-gradient(from 90deg at 80% 50%, var(--top), var(--bottom));
+      --second: conic-gradient(from 270deg at 20% 50%, var(--bottom), var(--top));
+    }
+  }
+
+  .border-gradient {
+    @apply relative;
+
+    &:before {
+      @apply pointer-events-none absolute inset-0 rounded-[inherit] p-1;
+      content: '';
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.07));
+      -webkit-mask: linear-gradient(black, black) content-box content-box,
+        linear-gradient(black, black);
+      -webkit-mask-composite: xor;
+    }
+  }
+}

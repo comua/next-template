@@ -1,0 +1,41 @@
+@keyframes background-slide {
+  100% {
+    background-position: bottom right;
+  }
+}
+
+@keyframes bloom {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes popup {
+  0% {
+    transform: rotateX(25deg);
+  }
+  25% {
+    transform: rotateX(25deg) scale(0.9);
+  }
+  60%,
+  100% {
+    transform: none;
+  }
+}

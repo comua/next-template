@@ -1,0 +1,22 @@
+.mask-fade-x {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%,
+    black calc(60%),
+    transparent 100%
+  );
+}
+
+.mask-fade-t {
+  -webkit-mask-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.57) 33.98%, black 100%);
+}
+
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(black, transparent 70%);
+}
+
+.mask-fade-content {
+  -webkit-mask: linear-gradient(black, black) content-box content-box, linear-gradient(black, black);
+  -webkit-mask-composite: xor;
+}
