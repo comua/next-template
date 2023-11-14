@@ -13,6 +13,8 @@
   ** 6. Change the default tap highlight to be completely transparent in iOS.
   */
   html {
+    overflow-x: hidden; /* 1 */
+    overflow-y: scroll; /* 2 */
     min-height: 100%; /* 3 */
   }
 

@@ -10,7 +10,7 @@ export const CustomersSection = () => {
         <span className="text-slate-50">From next-gen startups to established enterprises.</span>
       </p>
       <div className="mt-48 hidden grid-cols-6 gap-48 tablet:grid">
-        {[...Array(12)].map((_, index) => (
+        {Array.from({ length: 12 }).map((_, index) => (
           <div key={`client-list-${index}`} className="flex justify-center">
             <div
               key={`client-list-${index}`}
@@ -20,7 +20,7 @@ export const CustomersSection = () => {
         ))}
       </div>
       <div className="mt-48 grid w-full grid-cols-2 gap-48 tablet:hidden">
-        {[...Array(6)].map((_, index) => (
+        {Array.from({ length: 6 }).map((_, index) => (
           <div key={`client-list-${index}`} className="flex justify-center">
             <div className="border-gradient animate-gradient h-48 w-144 rounded-sm" />
           </div>
